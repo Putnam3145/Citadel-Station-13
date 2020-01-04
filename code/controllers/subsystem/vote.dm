@@ -341,8 +341,7 @@ SUBSYSTEM_DEF(vote)
 					saved -= usr.ckey
 	return 0
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, hideresults, votesystem = PLURALITY_VOTING, forced = FALSE,vote_time = -1)//CIT CHANGE - adds hideresults argument to votes to allow for obfuscated votes
-	vote_system = votesystem
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, hideresults, votesystem, forced = FALSE,vote_time = -1)//CIT CHANGE - adds hideresults argument to votes to allow for obfuscated votes
 	if(!mode)
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
@@ -408,6 +407,13 @@ SUBSYSTEM_DEF(vote)
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
+		if(votesystem)
+			vote_system = votesystem
+		else
+			if(choices <= 2)
+				vote_system = PLURALITY_VOTING
+			else
+				vote_system = CONFIG_GET(string/default_multivote_system)
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == "custom")
 			text += "\n[question]"

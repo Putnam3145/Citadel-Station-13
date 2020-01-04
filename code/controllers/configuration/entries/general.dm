@@ -78,6 +78,9 @@
 	config_entry_value = 600
 	min_val = 0
 
+/datum/config_entry/string/default_multivote_system // Default votetype for votes with more than two options
+	config_entry_value = "APPROVAL"
+
 /datum/config_entry/flag/default_no_vote	// vote does not default to nochange/norestart
 
 /datum/config_entry/flag/no_dead_vote	// dead people can't vote
