@@ -180,6 +180,14 @@ VOTE_DELAY 6000
 ## time period (deciseconds) which voting session will last (default 1 minute)
 VOTE_PERIOD 600
 
+## default vote type for votes with more than two entries
+## Options are:
+## PLURALITY -- first-past-the-post, each person votes for exactly one option on the voting ballot
+## APPROVAL -- each person can vote any number of people on the ballot
+## RANKED_CHOICE -- schulze score, each person ranks any number of options by preference
+## SCORE -- majority judgement, each person ranks how they feel about each option individually
+DEFAULT_MULTIVOTE_SYSTEM APPROVAL
+
 ## prevents dead players from voting or starting votes
 # NO_DEAD_VOTE
 
