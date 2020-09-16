@@ -1,6 +1,6 @@
 GLOBAL_VAR_INIT(hhStorageTurf, null)
 GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
-
+GLOBAL_VAR_INIT(hhRoomCooldown,0)
 /obj/item/hilbertshotel
 	name = "Hilbert's Hotel"
 	desc = "A sphere of what appears to be an intricate network of bluespace. Observing it in detail seems to give you a headache as you try to comprehend the infinite amount of infinitesimally distinct points on its surface."
@@ -105,6 +105,9 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 
 /// This is a BLOCKING OPERATION. Note the room load call, and the block reservation calls.
 /obj/item/hilbertshotel/proc/sendToNewRoom(var/roomNumber, var/mob/user)
+	if(world.time - GLOB.hhRoomCooldown < 60 SECONDS)
+		to_chat(src,"The hotel is warming up after allocating. Please wait [DisplayTimeText(GLOB.hhRomCooldown+60 SECONDS - world.time)].")
+		return
 	var/datum/turf_reservation/roomReservation = SSmapping.RequestBlockReservation(hotelRoomTemp.width, hotelRoomTemp.height)
 	if(ruinSpawned)
 		mysteryRoom = GLOB.hhmysteryRoomNumber
@@ -118,6 +121,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	linkTurfs(roomReservation, roomNumber)
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(roomReservation.bottom_left_coords[1] + hotelRoomTemp.landingZoneRelativeX, roomReservation.bottom_left_coords[2] + hotelRoomTemp.landingZoneRelativeY, roomReservation.bottom_left_coords[3]))
+	GLOB.hhRoomCooldown = world.time
 
 /obj/item/hilbertshotel/proc/linkTurfs(var/datum/turf_reservation/currentReservation, var/currentRoomnumber)
 	var/area/hilbertshotel/currentArea = get_area(locate(currentReservation.bottom_left_coords[1], currentReservation.bottom_left_coords[2], currentReservation.bottom_left_coords[3]))
