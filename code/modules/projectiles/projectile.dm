@@ -827,7 +827,7 @@
 	if(cleanup)
 		cleanup_beam_segments()
 
-/obj/item/projectile/experience_pressure_difference()
+/obj/item/projectile/experience_air_movement()
 	return
 
 /////// MISC HELPERS ////////

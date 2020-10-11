@@ -36,7 +36,7 @@
 				return FALSE
 	return ..()
 
-/mob/living/carbon/human/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0, throw_target)
+/mob/living/carbon/human/experience_air_movement(pressure_difference, direction, pressure_resistance_prob_delta = 0, throw_target)
 	if(prob(pressure_difference * 2.5))
 		playsound(src, 'sound/effects/space_wind.ogg', 50, 1)
 	if(shoes && istype(shoes, /obj/item/clothing))

@@ -12,7 +12,7 @@
 	sight = SEE_SELF
 	move_on_shuttle = FALSE
 
-/mob/camera/experience_pressure_difference()
+/mob/camera/experience_air_movement()
 	return
 
 /mob/camera/forceMove(atom/destination)

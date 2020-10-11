@@ -660,7 +660,7 @@
 	else
 		return pick("trails_1", "trails_2")
 
-/mob/living/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0)
+/mob/living/experience_air_movement(pressure_difference, direction, pressure_resistance_prob_delta = 0)
 	if(buckled)
 		return
 	if(client && client.move_delay >= world.time + world.tick_lag*2)

@@ -27,7 +27,7 @@
 /obj/effect/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
 	return 0
 
-/obj/effect/experience_pressure_difference()
+/obj/effect/experience_air_movement()
 	return
 
 /obj/effect/ex_act(severity, target)

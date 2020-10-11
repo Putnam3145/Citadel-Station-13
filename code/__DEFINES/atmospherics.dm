@@ -159,6 +159,12 @@
 #define CANATMOSPASS(A, O) ( A.CanAtmosPass == ATMOS_PASS_PROC ? A.CanAtmosPass(O) : ( A.CanAtmosPass == ATMOS_PASS_DENSITY ? !A.density : A.CanAtmosPass ) )
 #define CANVERTICALATMOSPASS(A, O) ( A.CanAtmosPassVertical == ATMOS_PASS_PROC ? A.CanAtmosPass(O, TRUE) : ( A.CanAtmosPassVertical == ATMOS_PASS_DENSITY ? !A.density : A.CanAtmosPassVertical ) )
 
+//FEA PROCESSING LEVELS
+#define TURF_PROCESSING_LEVEL_NONE 		-1
+#define TURF_PROCESSING_LEVEL_SPACE  	0
+#define TURF_PROCESSING_LEVEL_STATION 	1
+#define TURF_PROCESSING_LEVEL_PLANET 	2
+
 //OPEN TURF ATMOS
 #define OPENTURF_DEFAULT_ATMOS		"o2=22;n2=82;TEMP=293.15" //the default air mix that open turfs spawn
 #define TCOMMS_ATMOS				"n2=100;TEMP=80" //-193,15degC telecommunications. also used for xenobiology slime killrooms

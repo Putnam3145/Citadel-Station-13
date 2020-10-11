@@ -24,10 +24,13 @@
 	//This is used to optimize the map loader
 	return
 
+/turf/open/space/return_air()
+	return space_gas
+
 /turf/open/space/Initialize()
 	icon_state = SPACE_ICON_STATE
 	air = space_gas
-	update_air_ref()
+	set_processing_level(TURF_PROCESSING_LEVEL_SPACE)
 	vis_contents.Cut() //removes inherited overlays
 	visibilityChanged()
 
