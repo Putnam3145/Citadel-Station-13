@@ -99,6 +99,23 @@
 		return
 	. += (-b - root) / bottom
 
+/proc/theta_from_dir(dir) // 2D only, no quaternions or euler angles today. TODAY.
+	if(dir & NORTH)
+		if(dir & WEST)
+			return PI*0.75
+		else if(dir & EAST)
+			return PI * 0.25
+		return PI * 0.5
+	else if(dir & SOUTH)
+		if(dir & WEST)
+			return -PI*0.75
+		else if(dir & EAST)
+			return -PI * 0.25
+		return -PI * 0.5
+	else if(dir & WEST)
+		return PI
+	return 0.0
+
 #define TODEGREES(radians) ((radians) * 57.2957795)
 
 #define TORADIANS(degrees) ((degrees) * 0.0174532925)
